@@ -1,6 +1,8 @@
 package com.example.one.di
 
 import com.example.one.model.apiService.NikeApiService
+import com.example.one.service.FrescoImageLoadingServiceImpl
+import com.example.one.service.ImageLoadingService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,4 +20,9 @@ object ApplicationModule {
         return retrofit.create(NikeApiService::class.java)
     }
 
+    @Singleton
+    @Provides
+    fun provideImageLoadingService():ImageLoadingService{
+        return FrescoImageLoadingServiceImpl()
+    }
 }

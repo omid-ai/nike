@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="dividerColor" format="color"/>
+
+    <declare-styleable name="NikeToolBar">
+        <attr name="nt_toolBarTitle" format="string"/>
+    </declare-styleable>
+
+</resources>

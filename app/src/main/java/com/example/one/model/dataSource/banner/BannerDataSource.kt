@@ -1,8 +1,8 @@
-package com.example.one.model.repository
+package com.example.one.model.dataSource.banner
 
 import com.example.one.model.dataClass.Banner
 
-interface BannerRepository {
+interface BannerDataSource {
 
     suspend fun fetchBanner():List<Banner>
 }

@@ -25,6 +25,7 @@
         <item name="textAppearanceButton">@style/TextAppearance.MyTheme.Button</item>
         <item name="textAppearanceCaption">@style/TextAppearance.MyTheme.Caption</item>
         <item name="textAppearanceOverline">@style/TextAppearance.MyTheme.Overline</item>
+        <item name="dividerColor">@color/gray</item>
 
         <!-- Customize your theme here. -->
     </style>

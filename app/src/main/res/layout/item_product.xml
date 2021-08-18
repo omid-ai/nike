@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="175dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="4dp"
+    android:layout_marginEnd="4dp">
+
+    <com.example.one.service.NikeImageView
+        android:id="@+id/productIv"
+        android:layout_width="0dp"
+        android:layout_height="189dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:roundedCornerRadius="12dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/productNameTv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        tools:text="نام محصول"
+        android:textAppearance="?textAppearanceBody1"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:minLines="2"
+        android:paddingEnd="10dp"
+        android:paddingStart="8dp"
+        app:layout_constraintStart_toStartOf="@+id/productIv"
+        app:layout_constraintTop_toBottomOf="@+id/productIv" />
+
+    <TextView
+        android:id="@+id/previousPriceTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="200000تومان"
+        android:textAppearance="?textAppearanceBody2"
+        android:textColor="?android:textColorSecondary"
+        android:layout_marginTop="5dp"
+        app:layout_constraintStart_toStartOf="@+id/productNameTv"
+        app:layout_constraintTop_toBottomOf="@+id/productNameTv" />
+
+    <TextView
+        android:id="@+id/currentPriceTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="100000تومان"
+        android:textAppearance="?textAppearanceBody1"
+        android:layout_marginTop="2dp"
+        app:layout_constraintStart_toStartOf="@+id/previousPriceTv"
+        app:layout_constraintTop_toBottomOf="@+id/previousPriceTv" />
+
+    <ImageView
+        android:id="@+id/favoriteBtn"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:scaleType="centerInside"
+        app:layout_constraintStart_toStartOf="@+id/productIv"
+        app:layout_constraintTop_toTopOf="@+id/productIv"
+        app:srcCompat="@drawable/ic_favorites"
+        android:background="@drawable/background_favorite"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
