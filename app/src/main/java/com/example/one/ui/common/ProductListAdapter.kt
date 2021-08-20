@@ -12,6 +12,7 @@ import com.example.one.model.dataClass.Product
 import com.example.one.service.ImageLoadingService
 import com.example.one.service.NikeImageView
 import com.example.one.util.UtilFunctions.formatPrice
+import com.example.one.util.Variables
 import javax.inject.Inject
 
 class ProductListAdapter @Inject constructor(
@@ -19,7 +20,7 @@ class ProductListAdapter @Inject constructor(
 ) : RecyclerView.Adapter<ProductListAdapter.ViewHolder>() {
 
     var products:ArrayList<Product>?=null
-
+    var viewType:Int=Variables.VIEW_TYPE_ROUNDED
 
     var onItemClicked: ((Product) -> Unit)? = null
 
@@ -44,7 +45,15 @@ class ProductListAdapter @Inject constructor(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_product,parent,false))
+
+        val layoutRes=when(viewType){
+            Variables.VIEW_TYPE_ROUNDED->R.layout.item_product
+            Variables.VIEW_TYPE_LARGE->R.layout.item_product_large
+            Variables.VIEW_TYPE_SMALL->R.layout.item_product_small
+            else->throw IllegalStateException("unknown view type")
+        }
+
+        return ViewHolder(LayoutInflater.from(parent.context).inflate(layoutRes,parent,false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -52,4 +61,8 @@ class ProductListAdapter @Inject constructor(
     }
 
     override fun getItemCount(): Int = products!!.size
+
+    override fun getItemViewType(position: Int): Int {
+        return viewType
+    }
 }

@@ -25,6 +25,7 @@
     <string name="password">رمز عبور</string>
     <string name="signUp_hint">حساب کاربری ندارید؟</string>
     <string name="signUp">ثبت نام</string>
+    <string name="successfulSignUp">ثبت نام شما با موفقیت انجام شد</string>
     <string name="authHint">ایمیل و رمز عبور خود را وارد کنید</string>
     <string name="signUpScreenTitle">ایجاد حساب کاربری</string>
     <string name="loginHint">قبلا ثبت نام کردید؟</string>
@@ -71,4 +72,20 @@
     <string name="cancel">لغو</string>
     <string name="commentTitle">عنوان</string>
     <string name="commentSuccessfullyAdded">کامنت با موفقیت اضافه شد</string>
+
+    <string-array name="sort">
+        <item>@string/newest</item>
+        <item>@string/popular</item>
+        <item>@string/highPrice</item>
+        <item>@string/lowPrice</item>
+    </string-array>
+    <string name="title_activity_auth">AuthActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 </resources>

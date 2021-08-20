@@ -8,5 +8,5 @@
     <dimen name="editTextTextSize">16sp</dimen>
     <dimen name="textSizeEmptySate">18sp</dimen>
 
-
+    <dimen name="LoginViewComponentsWidth">175dp</dimen>
 </resources>

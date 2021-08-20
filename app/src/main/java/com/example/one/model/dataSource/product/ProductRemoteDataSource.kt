@@ -7,8 +7,8 @@ import javax.inject.Inject
 class ProductRemoteDataSource @Inject constructor(
     private val apiService: NikeApiService
 ):ProductDataSource {
-    override suspend fun getProducts(): List<Product> {
-        return apiService.fetchProduct()
+    override suspend fun getProducts(sort:Int): List<Product> {
+        return apiService.fetchProduct(sort.toString())
     }
 
     override suspend fun getFavoriteProducts(): List<Product> {

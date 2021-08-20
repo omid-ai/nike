@@ -2,12 +2,14 @@ package com.example.one.ui.productDetail
 
 import android.content.Intent
 import android.graphics.Paint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.one.R
+import com.example.one.common.base.NikeActivity
+import com.example.one.common.exceptionHandling.Result
 import com.example.one.databinding.ActivityProductDetailBinding
 import com.example.one.model.dataClass.Comment
 import com.example.one.service.ImageLoadingService
@@ -22,7 +24,7 @@ import timber.log.Timber
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class ProductDetailActivity : AppCompatActivity() {
+class ProductDetailActivity : NikeActivity() {
 
     lateinit var binding: ActivityProductDetailBinding
     val viewModel: ProductDetailViewModel by viewModels()
@@ -81,6 +83,15 @@ class ProductDetailActivity : AppCompatActivity() {
                     startActivity(Intent(this,CommentsActivity::class.java).apply {
                         putExtra(EXTRA_KEY_PRODUCT_ID,viewModel.productDetailLiveData.value!!.id)
                     })
+                }
+            }
+        }
+
+        binding.addToCartBtn.setOnClickListener {
+            viewModel.addToCart()
+            viewModel.addToCartResultLiveData.observe(this){result->
+                when(result){
+                    is Result.Success->showSnackBar(getString(R.string.success_addToCart))
                 }
             }
         }

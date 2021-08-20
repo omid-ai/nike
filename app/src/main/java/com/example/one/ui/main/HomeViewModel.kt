@@ -8,6 +8,7 @@ import com.example.one.model.dataClass.Banner
 import com.example.one.model.dataClass.Product
 import com.example.one.model.repository.banner.BannerRepository
 import com.example.one.model.repository.product.ProductRepository
+import com.example.one.util.Variables
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -39,7 +40,7 @@ class HomeViewModel @Inject constructor(
 
     private fun getProduct(){
         viewModelScope.launch {
-            val products=productRepository.getProducts()
+            val products=productRepository.getProducts(Variables.SORT_LATEST)
             _productLiveData.postValue(products)
         }
     }

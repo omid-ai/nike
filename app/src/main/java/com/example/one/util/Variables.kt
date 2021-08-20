@@ -4,6 +4,15 @@ object Variables {
 
     const val BASE_URL="http://expertdevelopers.ir/api/v1/"
 
+    const val VIEW_TYPE_ROUNDED=0
+    const val VIEW_TYPE_SMALL=1
+    const val VIEW_TYPE_LARGE=2
+
+    const val SORT_LATEST = 0
+    const val SORT_POPULAR = 1
+    const val SORT_PRICE_DESC = 2
+    const val SORT_PRICE_ASC = 3
+
     //name of the sharedPrefs
     const val SHARED_PREFERENCES_NAME = "niky_application"
 

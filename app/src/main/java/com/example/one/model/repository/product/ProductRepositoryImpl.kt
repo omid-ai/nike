@@ -7,8 +7,8 @@ import javax.inject.Inject
 class ProductRepositoryImpl @Inject constructor(
     private val remoteDataSource:ProductDataSource
 ):ProductRepository {
-    override suspend fun getProducts(): List<Product> {
-        return remoteDataSource.getProducts()
+    override suspend fun getProducts(sort:Int): List<Product> {
+        return remoteDataSource.getProducts(sort)
     }
 
     override suspend fun getFavoriteProducts(): List<Product> {

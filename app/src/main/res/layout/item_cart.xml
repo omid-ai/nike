@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="2dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginBottom="4dp"
+    android:layout_marginTop="4dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <com.example.one.service.NikeImageView
+            android:id="@+id/productImageV"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/productTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="28dp"
+            tools:text="نام محصول"
+            android:textAppearance="?textAppearanceBody1"
+            app:layout_constraintBottom_toBottomOf="@+id/productImageV"
+            app:layout_constraintEnd_toStartOf="@+id/productImageV"
+            app:layout_constraintTop_toTopOf="@+id/productImageV" />
+
+        <TextView
+            android:id="@+id/previousPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            tools:text="200000تومان"
+            android:textAppearance="?textAppearanceBody2"
+            android:textColor="?android:textColorSecondary"
+            app:layout_constraintBottom_toTopOf="@+id/currentPrice"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/currentPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="100000تومان"
+            android:textAppearance="?textAppearanceBody1"
+            app:layout_constraintBottom_toBottomOf="@+id/increaseCountIv"
+            app:layout_constraintStart_toStartOf="@+id/previousPrice" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/count"
+            android:textAppearance="?textAppearanceHeadline6"
+            app:layout_constraintEnd_toEndOf="@+id/productImageV"
+            app:layout_constraintStart_toStartOf="@+id/productImageV"
+            app:layout_constraintTop_toBottomOf="@+id/productImageV" />
+
+        <TextView
+            android:id="@+id/productCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:textAppearance="?textAppearanceBody1"
+            app:layout_constraintEnd_toEndOf="@+id/textView6"
+            app:layout_constraintStart_toStartOf="@+id/textView6"
+            app:layout_constraintTop_toBottomOf="@+id/textView6"
+            tools:text="2" />
+
+        <ImageView
+            android:id="@+id/increaseCountIv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/productCount"
+            app:layout_constraintEnd_toStartOf="@+id/productCount"
+            app:layout_constraintTop_toTopOf="@+id/productCount"
+            app:srcCompat="@drawable/ic_plus_square" />
+
+        <ImageView
+            android:id="@+id/decreaseCountIv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/productCount"
+            app:layout_constraintStart_toEndOf="@+id/productCount"
+            app:layout_constraintTop_toTopOf="@+id/productCount"
+            app:srcCompat="@drawable/ic_minus_square" />
+
+        <TextView
+            android:id="@+id/removeFromCart"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="16dp"
+            android:background="?selectableItemBackground"
+            android:gravity="center"
+            android:text="@string/removeFromCart"
+            android:textAppearance="?textAppearanceBody1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/productCount" />
+
+        <View
+            android:id="@+id/view3"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="?dividerColor"
+            app:layout_constraintBottom_toTopOf="@+id/removeFromCart"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ProgressBar
+            android:id="@+id/changeCountProgressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/productCount"
+            app:layout_constraintEnd_toStartOf="@+id/decreaseCountIv"
+            app:layout_constraintStart_toEndOf="@+id/increaseCountIv"
+            app:layout_constraintTop_toTopOf="@+id/productCount" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

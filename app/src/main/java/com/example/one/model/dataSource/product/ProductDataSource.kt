@@ -4,7 +4,7 @@ import com.example.one.model.dataClass.Product
 
 interface ProductDataSource {
 
-    suspend fun getProducts():List<Product>
+    suspend fun getProducts(sort:Int):List<Product>
 
     suspend fun getFavoriteProducts():List<Product>
 

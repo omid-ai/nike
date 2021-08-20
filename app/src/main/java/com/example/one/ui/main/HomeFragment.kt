@@ -12,10 +12,13 @@ import com.example.one.common.base.NikeFragment
 import com.example.one.databinding.FragmentHomeBinding
 import com.example.one.model.dataClass.Product
 import com.example.one.ui.common.ProductListAdapter
+import com.example.one.ui.list.ProductListActivity
 import com.example.one.ui.main.banner.BannerSliderAdapter
 import com.example.one.ui.productDetail.ProductDetailActivity
 import com.example.one.util.EXTRA_KEY_PRODUCT_DATA
+import com.example.one.util.EXTRA_KEY_PRODUCT_SORT
 import com.example.one.util.UtilFunctions.convertDpToPixel
+import com.example.one.util.Variables
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 import javax.inject.Inject
@@ -42,6 +45,12 @@ class HomeFragment: NikeFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.newestProductRv.layoutManager=LinearLayoutManager(requireContext(),RecyclerView.HORIZONTAL,false)
+
+        binding.viewAllNewestBtn.setOnClickListener {
+            startActivity(Intent(requireContext(),ProductListActivity::class.java).apply {
+                putExtra(EXTRA_KEY_PRODUCT_SORT,Variables.SORT_LATEST)
+            })
+        }
 
         homeViewModel.bannerLiveData.observe(viewLifecycleOwner){
             Timber.i("list of banners-> $it")

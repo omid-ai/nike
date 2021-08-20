@@ -25,8 +25,26 @@
         <item name="textAppearanceButton">@style/TextAppearance.MyTheme.Button</item>
         <item name="textAppearanceCaption">@style/TextAppearance.MyTheme.Caption</item>
         <item name="textAppearanceOverline">@style/TextAppearance.MyTheme.Overline</item>
-        <item name="dividerColor">@color/gray</item>
+        <item name="dividerColor">@color/black</item>
 
         <!-- Customize your theme here. -->
     </style>
+    <style name="Theme.One.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+
+
+
+    <style name="Theme.One.Auth" parent="Theme.One">
+        <item name="android:statusBarColor">@color/black</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="android:windowBackground">@color/black</item>
+        <item name="colorOnSurface">@color/white</item>
+        <item name="colorOnBackground">@color/white</item>
+        <item name="editTextStyle">@style/Theme.One.Auth.EditTextStyle</item>
+        <item name="materialButtonStyle">@style/Theme.One.Auth.MaterialBtnStyle</item>
+    </style>
+
 </resources>
