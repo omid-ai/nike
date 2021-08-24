@@ -26,4 +26,22 @@ interface NikeApiService {
 
     @GET("cart/list")
     suspend fun fetchCart():CartResponse
+
+    @POST("cart/remove")
+    suspend fun removeFromCart(@Body jsonObject: JsonObject):MessageResponse
+
+    @POST("cart/changeCount")
+    suspend fun changeCartItemCount(@Body jsonObject: JsonObject):AddToCartResponse
+
+    @GET("cart/count")
+    suspend fun getCartItemCount():CartItemCount
+
+    @POST("order/submit")
+    suspend fun submitOrder(@Body jsonObject: JsonObject):SubmitOrderResult
+
+    @GET("order/checkout")
+    suspend fun checkout(@Query("order_id")orderId:Int):Checkout
+
+    @GET("order/list")
+    suspend fun fetchOrderHistory():List<OrderHistoryItem>
 }

@@ -52,6 +52,10 @@ class HomeFragment: NikeFragment() {
             })
         }
 
+        homeViewModel.progressBarLiveData.observe(viewLifecycleOwner){
+            showProgressBar(it)
+        }
+
         homeViewModel.bannerLiveData.observe(viewLifecycleOwner){
             Timber.i("list of banners-> $it")
             val bannerAdapter=BannerSliderAdapter(this,it)
@@ -70,6 +74,10 @@ class HomeFragment: NikeFragment() {
             startActivity(Intent(requireContext(),ProductDetailActivity::class.java).apply {
                 putExtra(EXTRA_KEY_PRODUCT_DATA,it)
             })
+        }
+
+        adapter.onFavoriteBtnClicked={
+            homeViewModel.onFavoriteBtnClicked(it)
         }
     }
 

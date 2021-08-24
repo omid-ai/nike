@@ -14,17 +14,14 @@ class CartRepositoryImpl @Inject constructor(
     override suspend fun addToCart(productId: Int): AddToCartResponse =
         remoteDataSource.addToCart(productId)
 
-    override suspend fun removeFromCart(cartItemId: Int): MessageResponse {
-        TODO("Not yet implemented")
-    }
+    override suspend fun removeFromCart(cartItemId: Int): MessageResponse =
+        remoteDataSource.removeFromCart(cartItemId)
 
-    override suspend fun getCartItemCount(): CartItemCount {
-        TODO("Not yet implemented")
-    }
+    override suspend fun getCartItemCount(): CartItemCount =
+        remoteDataSource.getCartItemCount()
 
-    override suspend fun changeCartItemCount(cartItemId: Int, count: Int): AddToCartResponse {
-        TODO("Not yet implemented")
-    }
+    override suspend fun changeCartItemCount(cartItemId: Int, count: Int): AddToCartResponse =
+        remoteDataSource.changeCartItemCount(cartItemId,count)
 
     override suspend fun getCart(): CartResponse =
         remoteDataSource.getCart()

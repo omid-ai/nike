@@ -7,6 +7,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.one.R
+import com.example.one.common.base.NikeActivity
 import com.example.one.databinding.ActivityProductListBinding
 import com.example.one.model.dataClass.Product
 import com.example.one.ui.common.ProductListAdapter
@@ -19,7 +20,7 @@ import timber.log.Timber
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class ProductListActivity : AppCompatActivity() {
+class ProductListActivity : NikeActivity() {
 
     lateinit var binding: ActivityProductListBinding
     val viewModel:ProductListViewModel by viewModels()
@@ -31,6 +32,10 @@ class ProductListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding= ActivityProductListBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        viewModel.progressBarLiveData.observe(this){
+            showProgressBar(it)
+        }
 
         val gridLayout=GridLayoutManager(this,2)
         binding.productsRv.layoutManager=gridLayout

@@ -12,5 +12,9 @@ interface UserRepository {
 
     fun loadToken()
 
-    suspend fun onSuccessfulLogin(tokenResponce: TokenResponce)
+    suspend fun onSuccessfulLogin(tokenResponce: TokenResponce?,email:String?)
+
+    fun loadEmail():String
+
+    fun signOut()
 }

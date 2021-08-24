@@ -54,6 +54,8 @@
     <string name="orderHistory">سوابق سفارش</string>
     <string name="purchaseStatus">وضعیت سفارش</string>
     <string name="price">مبلغ</string>
+    <string name="successAtBuying">پرداخت با موفقیت انجام شد</string>
+    <string name="failedAtBuying">پرداخت ناموفق</string>
 
     <string name="favorites">لیست علاقه مندی ها</string>
     <string name="signIn">ورود به حساب کاربری</string>

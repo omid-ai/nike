@@ -2,6 +2,7 @@ package com.example.one.ui.list
 
 import androidx.lifecycle.*
 import com.example.one.R
+import com.example.one.common.base.NikeViewModel
 import com.example.one.model.dataClass.Product
 import com.example.one.model.repository.product.ProductRepository
 import com.example.one.util.EXTRA_KEY_PRODUCT_SORT
@@ -13,7 +14,7 @@ import javax.inject.Inject
 class ProductListViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle,
     private val productRepository: ProductRepository
-):ViewModel(){
+): NikeViewModel(){
 
     val sortNames= arrayOf(R.string.newest,R.string.popular,R.string.highPrice,R.string.lowPrice)
 
@@ -28,6 +29,7 @@ class ProductListViewModel @Inject constructor(
     val sortState:LiveData<Int> get() = _sortState
 
     init {
+        progressBarLiveData.value=true
         _selectedSortTitleLiveData.value=sortNames[getSort()]
         _sortState.value=getSort()
     }
@@ -42,6 +44,7 @@ class ProductListViewModel @Inject constructor(
         viewModelScope.launch {
             val products=productRepository.getProducts(sort)
             _productListLiveData.postValue(products)
+            progressBarLiveData.postValue(false)
         }
     }
 }

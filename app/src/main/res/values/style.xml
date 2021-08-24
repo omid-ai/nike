@@ -28,4 +28,22 @@
         <item name="android:textAppearance">?textAppearanceHeadline6</item>
     </style>
 
+    <style name="NikeTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:layout_marginStart">15dp</item>
+        <item name="android:layout_marginEnd">15dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+    </style>
+
+    <style name="ProfileTextViewStyle">
+        <item name="android:minHeight">45dp</item>
+        <item name="android:drawablePadding">15dp</item>
+        <item name="android:paddingEnd">15dp</item>
+        <item name="android:textAppearance">?textAppearanceBody1</item>
+        <item name="android:background">?selectableItemBackground</item>
+        <item name="android:gravity">start|center_vertical</item>
+    </style>
+
+    <style name="ProfileImageViewAvatar">
+        <item name="cornerSize">50%</item>
+    </style>
 </resources>

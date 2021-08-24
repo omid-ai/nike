@@ -25,7 +25,7 @@ class LoginViewModel @Inject constructor(
                 userRepository.login(username,password)
             }
             try {
-                userRepository.onSuccessfulLogin(tokenResponce.await())
+                userRepository.onSuccessfulLogin(tokenResponce.await(),username)
                 _loginResultLiveData.postValue(Result.Success(true,""))
             }catch (t:Throwable){
                  _loginResultLiveData.postValue(Result.Error(false,""))

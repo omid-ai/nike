@@ -19,10 +19,11 @@ class ProductListAdapter @Inject constructor(
     private val imageLoadingService: ImageLoadingService
 ) : RecyclerView.Adapter<ProductListAdapter.ViewHolder>() {
 
-    var products:ArrayList<Product>?=null
-    var viewType:Int=Variables.VIEW_TYPE_ROUNDED
+    var products: ArrayList<Product>? = null
+    var viewType: Int = Variables.VIEW_TYPE_ROUNDED
 
     var onItemClicked: ((Product) -> Unit)? = null
+    var onFavoriteBtnClicked: ((Product) -> Unit)? = null
 
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -41,19 +42,29 @@ class ProductListAdapter @Inject constructor(
             itemView.setOnClickListener {
                 onItemClicked?.invoke(product)
             }
+
+            if (product.isFavorite) favoriteBtn.setImageResource(R.drawable.ic_favorite_fill) else favoriteBtn.setImageResource(
+                R.drawable.ic_favorites
+            )
+
+            favoriteBtn.setOnClickListener {
+                product.isFavorite = !product.isFavorite
+                onFavoriteBtnClicked?.invoke(product)
+                notifyItemChanged(absoluteAdapterPosition)
+            }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
-        val layoutRes=when(viewType){
-            Variables.VIEW_TYPE_ROUNDED->R.layout.item_product
-            Variables.VIEW_TYPE_LARGE->R.layout.item_product_large
-            Variables.VIEW_TYPE_SMALL->R.layout.item_product_small
-            else->throw IllegalStateException("unknown view type")
+        val layoutRes = when (viewType) {
+            Variables.VIEW_TYPE_ROUNDED -> R.layout.item_product
+            Variables.VIEW_TYPE_LARGE -> R.layout.item_product_large
+            Variables.VIEW_TYPE_SMALL -> R.layout.item_product_small
+            else -> throw IllegalStateException("unknown view type")
         }
 
-        return ViewHolder(LayoutInflater.from(parent.context).inflate(layoutRes,parent,false))
+        return ViewHolder(LayoutInflater.from(parent.context).inflate(layoutRes, parent, false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

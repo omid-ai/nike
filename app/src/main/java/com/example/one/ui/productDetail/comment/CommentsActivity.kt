@@ -23,6 +23,10 @@ class CommentsActivity : NikeActivity() {
 
         binding.commentsRv.layoutManager=LinearLayoutManager(this,RecyclerView.VERTICAL,false)
 
+        viewModel.progressBarLiveData.observe(this){
+            showProgressBar(it)
+        }
+
         viewModel.commentsLiveData.observe(this){
             adapter.comments= it as ArrayList<Comment>
             if (it.size>3){

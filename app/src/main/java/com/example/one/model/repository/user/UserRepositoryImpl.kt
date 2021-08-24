@@ -31,8 +31,17 @@ class UserRepositoryImpl @Inject constructor(
         localDataSource.loadToken()
     }
 
-    override suspend fun onSuccessfulLogin(tokenResponce: TokenResponce){
-        localDataSource.saveToken(tokenResponce.access_token,tokenResponce.refresh_token)
+    override suspend fun onSuccessfulLogin(tokenResponce: TokenResponce?,email:String?){
+        localDataSource.saveToken(tokenResponce!!.access_token,tokenResponce.refresh_token)
         TokenContainer.update(tokenResponce.access_token,tokenResponce.refresh_token)
+        localDataSource.saveEmail(email!!)
+    }
+
+    override fun loadEmail(): String {
+        return localDataSource.loadEmail()
+    }
+
+    override fun signOut() {
+        localDataSource.signOut()
     }
 }

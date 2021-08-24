@@ -1,6 +1,7 @@
 package com.example.one.ui.productDetail.comment
 
 import androidx.lifecycle.*
+import com.example.one.common.base.NikeViewModel
 import com.example.one.model.dataClass.Comment
 import com.example.one.model.repository.comment.CommentRepository
 import com.example.one.util.EXTRA_KEY_PRODUCT_ID
@@ -12,12 +13,13 @@ import javax.inject.Inject
 class CommentsViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle,
     private val commentRepository: CommentRepository
-):ViewModel() {
+): NikeViewModel() {
 
     private val _commentsLiveData=MutableLiveData<List<Comment>>()
     val commentsLiveData:LiveData<List<Comment>> get() = _commentsLiveData
 
     init {
+        progressBarLiveData.value=true
         getComment()
     }
 
@@ -30,6 +32,7 @@ class CommentsViewModel @Inject constructor(
         viewModelScope.launch {
             val comments=commentRepository.getComments(getProductId())
             _commentsLiveData.postValue(comments)
+            progressBarLiveData.postValue(false)
         }
     }
 }

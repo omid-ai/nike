@@ -12,4 +12,10 @@ interface UserDataSource {
     fun loadToken()
 
     fun saveToken(token:String,refreshToken:String)
+
+    fun loadEmail():String
+
+    fun saveEmail(email:String)
+
+    fun signOut()
 }

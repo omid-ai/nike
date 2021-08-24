@@ -34,4 +34,16 @@ class UserRemoteDataSource @Inject constructor(
     override fun saveToken(token: String, refreshToken: String) {
         TODO("Not yet implemented")
     }
+
+    override fun loadEmail(): String {
+        TODO("Not yet implemented")
+    }
+
+    override fun saveEmail(email: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun signOut() {
+        TODO("Not yet implemented")
+    }
 }

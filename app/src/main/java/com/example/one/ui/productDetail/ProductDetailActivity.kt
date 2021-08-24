@@ -40,6 +40,10 @@ class ProductDetailActivity : NikeActivity() {
 
         binding.commentRv.layoutManager=LinearLayoutManager(this,RecyclerView.VERTICAL,false)
 
+        viewModel.progressBarLiveData.observe(this){
+            showProgressBar(it)
+        }
+
         viewModel.productDetailLiveData.observe(this) {
             imageLoadingService.load(binding.IvProduct, it.image)
             binding.productNameTv.text=it.title

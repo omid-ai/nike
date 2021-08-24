@@ -36,7 +36,7 @@ class SignUpViewModel @Inject constructor(
                 userRepository.login(username,password)
             }
             try {
-                userRepository.onSuccessfulLogin(tokenResponce.await())
+                userRepository.onSuccessfulLogin(tokenResponce.await(),username)
                 _signUpResultLiveData.postValue(Result.Success(true,""))
             }catch (t:Throwable){
                 _signUpResultLiveData.postValue(Result.Error(false,""))

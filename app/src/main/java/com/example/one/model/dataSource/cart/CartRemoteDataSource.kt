@@ -17,17 +17,19 @@ class CartRemoteDataSource @Inject constructor(
             addProperty("product_id",productId)
         })
 
-    override suspend fun removeFromCart(cartItemId: Int): MessageResponse {
-        TODO("Not yet implemented")
-    }
+    override suspend fun removeFromCart(cartItemId: Int): MessageResponse =
+        apiService.removeFromCart(JsonObject().apply {
+            addProperty("cart_item_id",cartItemId)
+        })
 
-    override suspend fun getCartItemCount(): CartItemCount {
-        TODO("Not yet implemented")
-    }
+    override suspend fun getCartItemCount(): CartItemCount =
+        apiService.getCartItemCount()
 
-    override suspend fun changeCartItemCount(cartItemId: Int, count: Int): AddToCartResponse {
-        TODO("Not yet implemented")
-    }
+    override suspend fun changeCartItemCount(cartItemId: Int, count: Int): AddToCartResponse =
+        apiService.changeCartItemCount(JsonObject().apply {
+            addProperty("cart_item_id",cartItemId)
+            addProperty("count",count)
+        })
 
     override suspend fun getCart(): CartResponse =
         apiService.fetchCart()

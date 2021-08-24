@@ -2,6 +2,8 @@ package com.example.one.common.base
 
 import android.content.Context
 import android.content.Intent
+import android.view.LayoutInflater
+import android.view.View
 import android.widget.Toast
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import com.example.one.R
@@ -14,6 +16,19 @@ import org.greenrobot.eventbus.ThreadMode
 interface NikeView {
     val viewContext:Context?
     val rootView:CoordinatorLayout?
+
+    fun showProgressBar(mustShow:Boolean){
+        rootView?.let {
+            viewContext?.let { context ->
+                var progressBar=it.findViewById<View>(R.id.progressBarLayout)
+                if (progressBar==null && mustShow){
+                    progressBar=LayoutInflater.from(context).inflate(R.layout.layout_progressbar,it,false)
+                    rootView?.addView(progressBar)
+                }
+                progressBar.visibility=if (mustShow)View.VISIBLE else View.GONE
+            }
+        }
+    }
 
     @Subscribe(threadMode= ThreadMode.MAIN)
     fun showError(nikeExceptionComponents: NikeExceptionComponents){
@@ -34,6 +49,21 @@ interface NikeView {
         rootView?.let {
             Snackbar.make(it, message, duration).show()
         }
+    }
+
+    fun showEmptyState(layoutRes:Int):View?{
+        rootView?.let {
+            viewContext?.let { context ->
+                var emptyState=it.findViewById<View>(R.id.emptyStateRootView)
+                if (emptyState==null){
+                    emptyState=LayoutInflater.from(context).inflate(layoutRes,it,false)
+                    rootView?.addView(emptyState)
+                }
+                emptyState.visibility=View.VISIBLE
+                return emptyState
+            }
+        }
+        return null
     }
 
 }
